@@ -4,7 +4,8 @@ import {
     getHandler,
     getByIdHandler,
     deleteHandler,
-    putHandler
+    putHandler,
+    loginHandler
 } from '../controllers/userController.js'
 
 const router = express.Router()
@@ -12,10 +13,14 @@ const router = express.Router()
 router.route('/')
     .post(postHandler)
     .get(getHandler)
+
 router.route('/:id')
     .get(getByIdHandler)
-    .delete(deleteHandler)
-    .put(putHandler)
-    .patch(putHandler)
+    .delete(verifyToken, deleteHandler)
+    .put(verifyToken, putHandler)
+    .patch(verifyToken,putHandler)
+
+router.route('/login')
+.post(loginHandler)
 
 export default router

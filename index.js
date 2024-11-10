@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import db from './db.js';
+import db from './comfig/db.js';
 import router from './routes/userRoute.js';
 
 
